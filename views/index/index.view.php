@@ -9,7 +9,7 @@
       onload="this.rel='stylesheet'"
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
     />
-link
+
     <title>HomeSync</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -826,24 +826,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- Sección de Tour Virtual -->
             <section id="virtual-tour" class="virtual-tour-section scroll-mt-20">
-              <h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Virtual Tour</h2>
-              <p class="text-base font-normal leading-normal pb-6 px-4">
-                Explora una casa inteligente con nuestro tour virtual interactivo. Descubre cómo la tecnología puede transformar tu hogar.
-              </p>
-              <div class="relative overflow-hidden rounded-xl mx-4 aspect-video bg-gray-800 flex items-center justify-center">
-                <div class="text-center p-8">
-                  <svg class="w-16 h-16 mx-auto text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <h3 class="text-xl font-bold text-white mb-2">Tour Virtual Interactivo</h3>
-                  <p class="text-gray-300 mb-4">Haz clic en el botón para comenzar la experiencia inmersiva</p>
-                  <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-colors">
-                    Iniciar Tour
-                  </button>
+              <div id="tour-initial-content">
+                <h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Virtual Tour</h2>
+                <p class="text-base font-normal leading-normal pb-6 px-4">
+                  Explora una casa inteligente con nuestro tour virtual interactivo. Descubre cómo la tecnología puede transformar tu hogar.
+                </p>
+                <div class="relative overflow-hidden rounded-xl mx-4 aspect-video bg-gray-800 flex items-center justify-center">
+                  <div class="text-center p-8">
+                    <svg class="w-16 h-16 mx-auto text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-xl font-bold text-white mb-2">Tour Virtual Interactivo</h3>
+                    <p class="text-gray-300 mb-4">Haz clic en el botón para comenzar la experiencia inmersiva</p>
+                    <button id="start-tour-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-colors">
+                      Iniciar Tour
+                    </button>
+                  </div>
                 </div>
               </div>
+              <div id="tour-iframe-container" class="hidden relative mx-4 aspect-video rounded-xl overflow-hidden">
+                <button id="close-tour-btn" class="absolute top-4 right-4 z-10 bg-gray-900 bg-opacity-80 text-white rounded-full px-3 py-1 font-bold hover:bg-opacity-100">Cerrar</button>
+                <iframe src="/casa-de-infonavit/public/utils/tourvirtual.html" class="w-full h-full min-h-[400px] rounded-xl border-0" allowfullscreen></iframe>
+              </div>
             </section>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var startBtn = document.getElementById('start-tour-btn');
+                var closeBtn = document.getElementById('close-tour-btn');
+                var initialContent = document.getElementById('tour-initial-content');
+                var iframeContainer = document.getElementById('tour-iframe-container');
+                if (startBtn) {
+                  startBtn.addEventListener('click', function() {
+                    initialContent.style.display = 'none';
+                    iframeContainer.classList.remove('hidden');
+                  });
+                }
+                if (closeBtn) {
+                  closeBtn.addEventListener('click', function() {
+                    iframeContainer.classList.add('hidden');
+                    initialContent.style.display = '';
+                  });
+                }
+              });
+            </script>
             <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Virtual Tour</h2>
             <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
               Take a virtual tour of a HomeSync-enabled home and experience the future of smart living. Explore the interactive 3D model with smooth scrolling and dynamic
