@@ -9,7 +9,7 @@
       onload="this.rel='stylesheet'"
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
     />
-
+link
     <title>HomeSync</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cargar modelo FBX
   // Cargar modelo FBX
 const loader = new THREE.FBXLoader();
-const modelPath = '/casa-de-infonavit/public/utils/1.fbx'; // Ajusta esta ruta
+const modelPath = '/casa-de-infonavit/public/utils/3d-model.glb'; // Ajusta esta ruta
 
 console.log('Intentando cargar modelo desde:', modelPath);
 
@@ -589,8 +589,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
   </head>
-  <body class="overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-  <canvas id="canvas3d" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></canvas>
+  <body>
+    <div id="model-container" class="position-fixed w-100 h-100"></div>
+    <div id="model-container" class="position-fixed w-100 h-100"></div>
+    <canvas id="canvas3d" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></canvas>
   
   <!-- El resto de tu contenido existente -->    <div class="relative min-h-screen bg-[#151a1e] dark group/design-root">
       <!-- Header fijo -->
@@ -898,11 +900,13 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
       </footer>
     </div>
-  </body>
+    <script type="module" src="/public/a.js"></script>
+</body>
       <!-- Three.js y dependencias -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-
+<script type="module" src="/public/a.js"></script>
+</script>
 </html>
