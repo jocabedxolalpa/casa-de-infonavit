@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cargar modelo FBX
   // Cargar modelo FBX
 const loader = new THREE.FBXLoader();
-const modelPath = '/casa-de-infonavit/public/utils/3d-model.glb'; // Ajusta esta ruta
+const modelPath = '/public/utils/3d-model.glb'; // Ajusta esta ruta
 
 console.log('Intentando cargar modelo desde:', modelPath);
 
@@ -900,13 +900,11 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
       </footer>
     </div>
-    <script type="module" src="/public/a.js"></script>
+    <!-- <script type="module" src="/public/a.js"></script> -->
 </body>
       <!-- Three.js y dependencias -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-<script type="module" src="/public/a.js"></script>
-</script>
+<script type="module" src="public/a.js"></script>
 </html>

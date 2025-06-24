@@ -2,6 +2,8 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.m
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/loaders/GLTFLoader.js';
 
 const container = document.getElementById('model-container');
+let loadedModel = null; // Variable para almacenar el modelo cargado
+
 if(container) {
     // Crear la escena
     const scene = new THREE.Scene();
@@ -25,8 +27,9 @@ if(container) {
 
     // Cargar modelo GLB
     const loader = new GLTFLoader();
-    loader.load('/model/3d-model.glb', function(gltf) {
-        scene.add(gltf.scene);
+    loader.load('/public/utils/3d-model.glb', function(gltf) {
+        loadedModel = gltf.scene;
+        scene.add(loadedModel);
     }, undefined, function(error) {
         console.error('Error al cargar el modelo 3D:', error);
     });
@@ -37,6 +40,19 @@ if(container) {
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
+
+    // Funciones para rotar el modelo
+    function rotateModel(axis, angle) {
+        if (loadedModel) {
+            loadedModel.rotation[axis] += angle;
+        }
+    }
+
+    // Asignar eventos a los botones de navegación
+    document.getElementById('nav-left')?.addEventListener('click', () => rotateModel('y', Math.PI / 8));
+    document.getElementById('nav-right')?.addEventListener('click', () => rotateModel('y', -Math.PI / 8));
+    document.getElementById('nav-up')?.addEventListener('click', () => rotateModel('x', Math.PI / 8));
+    document.getElementById('nav-down')?.addEventListener('click', () => rotateModel('x', -Math.PI / 8));
 
     // Animación
     function animate() {
