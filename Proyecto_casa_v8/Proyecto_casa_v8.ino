@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <WebServer.h>
-#include <Servo.h>
+#include <ESP32Servo.h>
 
-const char* ssid = "red";
-const char* password = "contraseña";
+const char* ssid = "Sistemas_WiFi";
+const char* password = "$.56841312.%";
 
 WebServer server(80);
 
@@ -15,9 +15,13 @@ const int ledSanitario = 21;
 const int ledCochera = 22;
 const int ledTerraza = 23;
 const int ledExtractor = 25;
-const int pinservogarage = 13;
+const int pinservogaraje = 13;
 
-Servo servogarage;// declaracion de servo
+Servo servogaraje;  
+
+unsigned long tiempoLuzCochera = 0;
+bool luzCocheraEncendida = false;
+
 
 void setup() {
   Serial.begin(115200);
@@ -29,9 +33,11 @@ void setup() {
   pinMode(ledTerraza, OUTPUT);
   pinMode(ledExtractor, OUTPUT);
   
-  servogarage.attach(pinservogarage);//se declara inico de servo
 
-  // Todo apagado al inicio (por lógica inversa del relevador)
+  servogaraje.attach(pinservogaraje);  // Inicia el servo
+  servogaraje.write(0);                // Servo en posición inicial
+
+  // Apagar todo al inicio
   digitalWrite(puerta, HIGH);
   digitalWrite(ledCocina, HIGH);
   digitalWrite(ledRecamara, HIGH);
@@ -39,8 +45,6 @@ void setup() {
   digitalWrite(ledCochera, HIGH);
   digitalWrite(ledTerraza, HIGH);
   digitalWrite(ledExtractor, HIGH);
-
-  servogarage.write(0); //se incia el servo a 0 
 
   Serial.println("Configurando WiFi en modo estación");
   WiFi.mode(WIFI_STA);
@@ -57,7 +61,6 @@ void setup() {
 
   server.on("/", HTTP_GET, handleRoot);
 
-  // Comandos para encender/apagar todo (excepto puerta y extractor)
   server.on("/encender_todo", HTTP_GET, [](){
     digitalWrite(ledCocina, LOW);
     digitalWrite(ledRecamara, LOW);
@@ -75,19 +78,20 @@ void setup() {
     digitalWrite(ledTerraza, HIGH);
     server.send(200, "text/plain", "Todas las luces apagadas");
   });
-  
-  server.on("/abrir_garage", HTTP_GET, [](){ 
-    servogarage.write(90); 
-    server.send(200, "text/plain", "Garage Abierto");
+
+  server.on("/abrir_garaje", HTTP_GET, []() {
+  servogaraje.write(90);                         // Abre el garaje
+  digitalWrite(ledCochera, HIGH);                // Apaga la luz de cochera
+  tiempoLuzCochera = millis();                   // Inicia el conteo
+  luzCocheraEncendida = true;                    // Indicador de cuenta regresiva
+  server.send(200, "text/plain", "Garaje Abierto y luz cochera apagada");
+});
+
+
+  server.on("/cerrar_garaje", HTTP_GET, [](){
+    servogaraje.write(0);
+    server.send(200, "text/plain", "Garaje Cerrado");
   });
-
-  server.on("/cerrar_garage", HTTP_GET, [](){ 
-    servogarage.write(0); 
-    server.send(200, "text/plain", "Garage Cerrado");
-  });
-
-
-  
 
   server.on("/abrir_puerta", HTTP_GET, [](){ digitalWrite(puerta, LOW); server.send(200, "text/plain", "Puerta Abierta"); });
   server.on("/cerrar_puerta", HTTP_GET, [](){ digitalWrite(puerta, HIGH); server.send(200, "text/plain", "Puerta Cerrada"); });
@@ -117,6 +121,12 @@ void setup() {
 
 void loop() {
   server.handleClient();
+  
+if (luzCocheraEncendida && millis() - tiempoLuzCochera >= 60000) {
+  digitalWrite(ledCochera, LOW);               // Apaga la luz
+  luzCocheraEncendida = false;                  // Reinicia el estado
+  Serial.println("Luz de cochera apagada automáticamente");
+}
 }
 
 void handleRoot() {
@@ -129,14 +139,10 @@ void handleRoot() {
   html += "<p><a href='/encender_cochera'>Encender Cochera</a> | <a href='/apagar_cochera'>Apagar Cochera</a></p>";
   html += "<p><a href='/encender_terraza'>Encender Terraza</a> | <a href='/apagar_terraza'>Apagar Terraza</a></p>";
   html += "<p><a href='/iniciar_extractor'>Iniciar Extractor</a> | <a href='/detener_extractor'>Detener Extractor</a></p>";
-  html += "<p><a href='/abrir_garage'>Abrir Garage</a> | <a href='/cerrar_garage'>Cerrar Garage</a></p>";
-
+  html += "<p><a href='/abrir_garaje'>Abrir Garaje</a> | <a href='/cerrar_garaje'>Cerrar Garaje</a></p>";
   server.send(200, "text/html", html);
 }
 
 void handleNotFound() {
   server.send(404, "text/plain", "Comando no reconocido");
 }
-
-
-
