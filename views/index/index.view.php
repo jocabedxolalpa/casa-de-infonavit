@@ -10,9 +10,16 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
     />
 
-    <title>HomeSync</title>
+    <title>DomoticLink - Hogar Inteligente</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      [x-cloak] { display: none !important; }
+    </style>
+    <!-- Alpine.js y plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <script>
       // Función para alternar el menú móvil
       function toggleMobileMenu() {
@@ -598,26 +605,19 @@ document.addEventListener('DOMContentLoaded', function() {
       <!-- Header fijo -->
       <header class="fixed top-0 left-0 right-0 z-50 bg-[#151a1ee6] backdrop-blur-md flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#2c363f] px-4 md:px-10 py-3 h-20">
           <div class="flex items-center gap-4 text-white">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+            <div class="h-8 w-8">
+              <img src="public/image/logo.jpeg" alt="Logo DomoticLink" class="h-full w-full object-contain">
             </div>
-            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">HomeSync</h2>
+            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">DomoticLink</h2>
           </div>
           <!-- Menú de escritorio -->
           <div id="desktop-menu" class="hidden lg:flex items-center gap-9">
-            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#home">Home</a>
-            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#about">About Us</a>
-            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#services">Our Services</a>
-            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#how-it-works">How It Works</a>
-            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#app">App Download</a>
-            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#virtual-tour">Virtual Tour</a>
+            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#home">Inicio</a>
+            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#about">Nosotros</a>
+            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#services">Servicios</a>
+            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#how-it-works">¿Cómo Funciona?</a>
+            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#app">Descargar App</a>
+            <a class="text-white text-sm font-medium leading-normal hover:text-blue-300 transition-colors" href="#virtual-tour">Tour Virtual</a>
           </div>
           
           <!-- Botón de menú móvil -->
@@ -631,15 +631,15 @@ document.addEventListener('DOMContentLoaded', function() {
           <div id="mobile-menu" class="lg:hidden">
             <div class="container mx-auto px-4 py-6">
               <nav class="flex flex-col space-y-3">
-                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#home" onclick="closeMobileMenu()">Home</a>
-                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#about" onclick="closeMobileMenu()">About Us</a>
-                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#services" onclick="closeMobileMenu()">Our Services</a>
-                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
-                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#app" onclick="closeMobileMenu()">App Download</a>
-                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#virtual-tour" onclick="closeMobileMenu()">Virtual Tour</a>
+                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#home" onclick="closeMobileMenu()">Inicio</a>
+                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#about" onclick="closeMobileMenu()">Nosotros</a>
+                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#services" onclick="closeMobileMenu()">Servicios</a>
+                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#how-it-works" onclick="closeMobileMenu()">¿Cómo Funciona?</a>
+                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#app" onclick="closeMobileMenu()">Descargar App</a>
+                <a class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors" href="#virtual-tour" onclick="closeMobileMenu()">Tour Virtual</a>
                 <div class="pt-4 mt-2">
                   <button class="w-full bg-[#dae5f0] text-[#151a1e] py-3 px-6 rounded-full font-bold text-sm hover:bg-opacity-90 transition-colors" data-modal-toggle="contactModal" onclick="closeMobileMenu()">
-                    Get Started
+                    Comenzar
                   </button>
                 </div>
               </nav>
@@ -650,7 +650,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#dae5f0] text-[#151a1e] text-sm font-bold leading-normal tracking-[0.015em]"
                 data-modal-toggle="contactModal"
               >
-                <span class="truncate">Get Started</span>
+                <span class="truncate">Comenzar</span>
               </button>
               <div class="flex items-center gap-2">
                 <div class="checkbox-wrapper-54">
@@ -676,37 +676,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 >
                   <div class="flex flex-col gap-2 text-center">
                     <h1 id="home" class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] scroll-mt-20">
-                      Experience the Future of Smart Living
+                      Experimenta el Futuro de la Vivienda Inteligente
                     </h1>
                     <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                      HomeSync seamlessly integrates technology into your home, providing unparalleled control and comfort. Explore our interactive 3D model with smooth scrolling
-                      and dynamic animations to discover how we can transform your living space.
+                      DomoticLink integra tecnología en tu hogar, proporcionando un control y comodidad sin precedentes. Explora nuestro tour interactivo del hogar con scrolling suave
+                      y animaciones dinámicas para descubrir cómo podemos transformar tu espacio de vida.
                     </h2>
                   </div>
                   <button
                     class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#dae5f0] text-[#151a1e] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                   >
-                    <span class="truncate">Explore 3D Model</span>
+                    <span class="truncate">Explorar Modelo 3D</span>
                   </button>
                 </div>
               </div>
             </div>
-            <h2 id="about" class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 scroll-mt-20">About Us</h2>
+            <h2 id="about" class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 scroll-mt-20">Acerca de</h2>
             <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
-              At HomeSync, we are dedicated to revolutionizing home living through innovative smart technology. Our mission is to create seamless, intuitive, and secure home
-              environments that enhance comfort and efficiency. With a team of experts in technology and design, we strive to deliver solutions that meet the evolving needs of
-              modern homeowners.
+              En DomoticLink, estamos dedicados a revolucionar la forma en que vivimos en nuestros hogares a través de tecnología inteligente innovadora. Nuestra misión es crear entornos de hogar sin fisuras, intuitivos y seguros que mejoren la comodidad y la eficiencia. Con un equipo de expertos en tecnología y diseño, nos esforzamos por ofrecer soluciones que satisfagan las necesidades cambiantes de los propietarios de hogares modernos.
             </p>
-            <h2 id="services" class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 scroll-mt-20">Our Services</h2>
+            <h2 id="services" class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 scroll-mt-20">Nuestros Servicios</h2>
             <div class="flex flex-col gap-10 px-4 py-10 @container">
               <div class="flex flex-col gap-4">
                 <h1
                   class="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
                 >
-                  Smart Home Features
+                  Características de Hogar Inteligente
                 </h1>
                 <p class="text-white text-base font-normal leading-normal max-w-[720px]">
-                  HomeSync offers a range of features designed to enhance your home living experience. From automated lighting to advanced security, we've got you covered.
+                  DomoticLink ofrece una amplia gama de características diseñadas para mejorar tu experiencia de vida en el hogar. Desde iluminación automatizada hasta seguridad avanzada, tenemos todo cubierto.
                 </p>
               </div>
               <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0">
@@ -719,8 +717,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <h2 class="text-white text-base font-bold leading-tight">Smart Lighting</h2>
-                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Control your lights remotely, set schedules, and create custom lighting scenes.</p>
+                    <h2 class="text-white text-base font-bold leading-tight">Iluminación Inteligente</h2>
+                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Controla tus luces de forma remota, programa horarios y crea escenas de iluminación personalizadas.</p>
                   </div>
                 </div>
                 <div class="flex flex-1 gap-3 rounded-lg border border-[#3f4d5a] bg-[#20262d] p-4 flex-col">
@@ -732,21 +730,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <h2 class="text-white text-base font-bold leading-tight">Energy Management</h2>
-                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Monitor and optimize your energy usage to reduce costs and environmental impact.</p>
+                    <h2 class="text-white text-base font-bold leading-tight">Gestión de Energía</h2>
+                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Monitorea y optimiza el consumo de energía para reducir costos e impacto ambiental.</p>
                   </div>
                 </div>
                 <div class="flex flex-1 gap-3 rounded-lg border border-[#3f4d5a] bg-[#20262d] p-4 flex-col">
                   <div class="text-white" data-icon="Lock" data-size="24px" data-weight="regular">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
                       <path
-                        d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"
+                        d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,1,1,32-32A32,32,0,0,1,96,56ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"
                       ></path>
                     </svg>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <h2 class="text-white text-base font-bold leading-tight">Security Systems</h2>
-                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Protect your home with smart locks, motion sensors, and real-time alerts.</p>
+                    <h2 class="text-white text-base font-bold leading-tight">Sistemas de Seguridad</h2>
+                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Protege tu hogar con cerraduras inteligentes, sensores de movimiento y alertas en tiempo real.</p>
                   </div>
                 </div>
                 <div class="flex flex-1 gap-3 rounded-lg border border-[#3f4d5a] bg-[#20262d] p-4 flex-col">
@@ -758,8 +756,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <h2 class="text-white text-base font-bold leading-tight">Climate Control</h2>
-                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Maintain the perfect temperature with intelligent thermostats and automated climate control.</p>
+                    <h2 class="text-white text-base font-bold leading-tight">Control de Clima</h2>
+                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Mantén la temperatura perfecta con termostatos inteligentes y control de clima automatizado.</p>
                   </div>
                 </div>
                 <div class="flex flex-1 gap-3 rounded-lg border border-[#3f4d5a] bg-[#20262d] p-4 flex-col">
@@ -771,8 +769,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <h2 class="text-white text-base font-bold leading-tight">Surveillance</h2>
-                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Keep an eye on your property with high-definition cameras and remote access.</p>
+                    <h2 class="text-white text-base font-bold leading-tight">Vigilancia</h2>
+                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Vigila tu propiedad con cámaras de alta definición y acceso remoto.</p>
                   </div>
                 </div>
                 <div class="flex flex-1 gap-3 rounded-lg border border-[#3f4d5a] bg-[#20262d] p-4 flex-col">
@@ -784,21 +782,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <h2 class="text-white text-base font-bold leading-tight">Entertainment</h2>
-                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Enjoy seamless integration with your favorite music and entertainment systems.</p>
+                    <h2 class="text-white text-base font-bold leading-tight">Entretenimiento</h2>
+                    <p class="text-[#a0adbb] text-sm font-normal leading-normal">Disfruta de integración perfecta con tus sistemas de música y entretenimiento favoritos.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <h2 id="how-it-works" class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 scroll-mt-20">How It Works</h2>
+            <h2 id="how-it-works" class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 scroll-mt-20">¿Cómo Funciona?</h2>
             <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
-              HomeSync integrates with your existing home systems to create a unified smart home experience. Our system uses a central hub to connect all your devices, allowing you
-              to control them from a single app. With advanced automation features, your home learns your preferences and adjusts settings automatically, saving you time and
-              energy.
+              DomoticLink se integra con los sistemas existentes de tu hogar para crear una experiencia de hogar inteligente unificada. Nuestro sistema utiliza un centro de control para conectar todos tus dispositivos, permitiéndote controlarlos desde una sola aplicación. Con funciones avanzadas de automatización, tu hogar aprende tus preferencias y ajusta la configuración automáticamente, ahorrándote tiempo y ofreciendo la máxima comodidad.
             </p>
             <!-- Sección de Descarga de Aplicación -->
             <section id="app" class="app-section scroll-mt-20">
-              <h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">App Download</h2>
+              <h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Descargar App</h2>
               <p class="text-base font-normal leading-normal pb-6 px-4">
                 Descarga nuestra aplicación para controlar tu hogar inteligente desde cualquier lugar. Disponible para iOS y Android.
               </p>
@@ -808,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12 6.8c0-1.4 1.15-2.64 2.1-3.7-.33-2.24-2.21-3.02-2.1-3.7C10.1.1 9.31 2.3 11.34 4.1c.75.64 1.66 1.03 2.66 1.14-.02-.16.01-.3 0-.44z"></path>
                   </svg>
                   <div class="text-left">
-                    <div class="text-xs">Download on the</div>
+                    <div class="text-xs">Descargar en la</div>
                     <div class="text-xl font-semibold">App Store</div>
                   </div>
                 </a>
@@ -817,7 +813,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92v-18.53a1 1 0 0 1 .609-.922zm.921 2.387L11 11.955 4.53 19.673 4.53 4.201zM14.043 12l4.174 4.174-2.704 2.705-4.175-4.175 2.705-2.704zM19.5 14.573l-2.75-2.75 2.75-2.75.002 5.5z"></path>
                   </svg>
                   <div class="text-left">
-                    <div class="text-xs">Get it on</div>
+                    <div class="text-xs">Obtén en</div>
                     <div class="text-xl font-semibold">Google Play</div>
                   </div>
                 </a>
@@ -827,7 +823,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Sección de Tour Virtual -->
             <section id="virtual-tour" class="virtual-tour-section scroll-mt-20">
               <div id="tour-initial-content">
-                <h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Virtual Tour</h2>
+                <h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Tour Virtual</h2>
                 <p class="text-base font-normal leading-normal pb-6 px-4">
                   Explora una casa inteligente con nuestro tour virtual interactivo. Descubre cómo la tecnología puede transformar tu hogar.
                 </p>
@@ -870,16 +866,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
               });
             </script>
-            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Virtual Tour</h2>
+            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Tour Virtual</h2>
             <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
-              Take a virtual tour of a HomeSync-enabled home and experience the future of smart living. Explore the interactive 3D model with smooth scrolling and dynamic
-              animations to see how our technology integrates seamlessly into every room, enhancing comfort and convenience.
+              Explora una casa inteligente con nuestro tour virtual interactivo. Descubre cómo la tecnología puede transformar tu hogar.
             </p>
-            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Contact</h2>
+            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Contacto</h2>
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
                 <input
-                  placeholder="Your Name"
+                  placeholder="Tu Nombre"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#2c363f] focus:border-none h-14 placeholder:text-[#a0adbb] p-4 text-base font-normal leading-normal"
                   value=""
                 />
@@ -888,7 +883,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
                 <input
-                  placeholder="Your Email"
+                  placeholder="Tu Correo Electrónico"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#2c363f] focus:border-none h-14 placeholder:text-[#a0adbb] p-4 text-base font-normal leading-normal"
                   value=""
                 />
@@ -897,7 +892,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
               <label class="flex flex-col min-w-40 flex-1">
                 <textarea
-                  placeholder="Your Message"
+                  placeholder="Tu Mensaje"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#2c363f] focus:border-none min-h-36 placeholder:text-[#a0adbb] p-4 text-base font-normal leading-normal"
                 ></textarea>
               </label>
@@ -906,25 +901,256 @@ document.addEventListener('DOMContentLoaded', function() {
               <button
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#dae5f0] text-[#151a1e] text-sm font-bold leading-normal tracking-[0.015em]"
               >
-                <span class="truncate">Send</span>
+                <span class="truncate">Enviar</span>
               </button>
             </div>
           </div>
         </div>
+        <!-- Sección Nuestro Equipo -->
+        <section id="team" class="py-16 px-4 sm:px-6 lg:px-8" x-data="teamCarousel()">
+          <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">Nuestro Equipo</h2>
+            
+            <!-- Carrusel -->
+            <div class="relative">
+              <div class="swiper team-swiper">
+                <div class="swiper-wrapper pb-10">
+                  <template x-for="(member, index) in teamMembers" :key="index">
+                    <div class="swiper-slide">
+                      <div @click="openModal(member)" class="bg-[#20262d] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer mx-2">
+                        <div class="h-64 bg-gray-700 flex items-center justify-center">
+                          <img :src="member.image" :alt="member.name" class="h-full w-full object-cover">
+                        </div>
+                        <div class="p-6">
+                          <h3 class="text-xl font-semibold text-white" x-text="member.name"></h3>
+                          <p class="text-blue-300 mb-2" x-text="member.position"></p>
+                          <p class="text-gray-400 text-sm" x-text="member.shortBio"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+                <!-- Navegación -->
+                <div class="swiper-button-next text-blue-400"></div>
+                <div class="swiper-button-prev text-blue-400"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Simple -->
+          <div x-show="isOpen" 
+               x-cloak
+               @click.self="isOpen = false"
+               class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-70">
+            <div class="bg-[#20262d] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+              <div class="p-6">
+                <!-- Encabezado -->
+                <div class="flex justify-between items-start mb-6">
+                  <h3 class="text-2xl font-bold text-white" x-text="selectedMember.name"></h3>
+                  <button @click="isOpen = false" class="text-gray-400 hover:text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <!-- Contenido -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <!-- Columna izquierda: Foto e info básica -->
+                  <div class="space-y-4">
+                    <img :src="selectedMember.image" :alt="selectedMember.name" class="w-full h-64 object-cover rounded-lg">
+                    <div>
+                      <h4 class="text-lg font-semibold text-blue-300" x-text="selectedMember.position"></h4>
+                      <p class="text-gray-400 text-sm mt-1" x-text="selectedMember.email"></p>
+                      <p class="text-gray-400 text-sm mt-1" x-text="selectedMember.phone"></p>
+                    </div>
+                  </div>
+                  
+                  <!-- Columna derecha: Detalles -->
+                  <div class="md:col-span-2 space-y-6">
+                    <!-- Biografía -->
+                    <div>
+                      <h4 class="text-lg font-semibold text-white mb-2">Biografía</h4>
+                      <p class="text-gray-300" x-text="selectedMember.bio"></p>
+                    </div>
+                    
+                    <!-- Habilidades -->
+                    <div>
+                      <h4 class="text-lg font-semibold text-white mb-2">Habilidades</h4>
+                      <div class="flex flex-wrap gap-2">
+                        <template x-for="(skill, index) in selectedMember.skills" :key="index">
+                          <span class="bg-blue-900 text-blue-100 text-xs px-3 py-1 rounded-full" x-text="skill"></span>
+                        </template>
+                      </div>
+                    </div>
+                    
+                    <!-- Experiencia -->
+                    <div>
+                      <h4 class="text-lg font-semibold text-white mb-3">Experiencia</h4>
+                      <div class="space-y-4">
+                        <template x-for="(exp, index) in selectedMember.experience" :key="index">
+                          <div class="border-l-2 border-blue-500 pl-4 py-1">
+                            <h5 class="text-white font-medium" x-text="exp.role"></h5>
+                            <p class="text-blue-300 text-sm" x-text="exp.company"></p>
+                            <p class="text-gray-400 text-xs" x-text="exp.duration"></p>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <script>
+        function teamCarousel() {
+          return {
+            isOpen: false,
+            selectedMember: null,
+            teamMembers: [
+              {
+                name: 'María González',
+                position: 'CEO & Fundadora',
+                email: 'maria@domoticlink.com',
+                phone: '+52 55 1234 5678',
+                image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
+                shortBio: 'Experta en automatización del hogar con más de 10 años de experiencia en el sector.',
+                bio: 'Ingeniera en Sistemas con más de 10 años de experiencia en el diseño e implementación de soluciones de domótica residencial. Apasionada por crear hogares más inteligentes y eficientes que mejoren la calidad de vida de las personas.',
+                skills: ['Automatización', 'IoT', 'Liderazgo', 'Estrategia'],
+                experience: [
+                  { role: 'CEO & Fundadora', company: 'DomoticLink', duration: '2020 - Presente' },
+                  { role: 'Ingeniera Senior', company: 'SmartHome Solutions', duration: '2015 - 2020' },
+                  { role: 'Desarrolladora IoT', company: 'TechHome', duration: '2012 - 2015' }
+                ]
+              },
+              {
+                name: 'Carlos Mendoza',
+                position: 'Ingeniero en Sistemas',
+                email: 'carlos@domoticlink.com',
+                phone: '+52 55 2345 6789',
+                image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                shortBio: 'Especialista en integración de sistemas y desarrollo de software para hogares inteligentes.',
+                bio: 'Ingeniero en Sistemas con amplia experiencia en el desarrollo de software para sistemas de automatización del hogar. Especializado en la integración de diferentes tecnologías para crear soluciones personalizadas.',
+                skills: ['JavaScript', 'Python', 'IoT', 'Seguridad'],
+                experience: [
+                  { role: 'Ingeniero en Sistemas', company: 'DomoticLink', duration: '2020 - Presente' },
+                  { role: 'Desarrollador Full Stack', company: 'HomeAuto', duration: '2017 - 2020' },
+                  { role: 'Practicante de Desarrollo', company: 'TechSolutions', duration: '2016 - 2017' }
+                ]
+              },
+              {
+                name: 'Ana Torres',
+                position: 'Diseñadora UX/UI',
+                email: 'ana@domoticlink.com',
+                phone: '+52 55 3456 7890',
+                image: 'https://images.unsplash.com/photo-1573496358961-3cde61c0d912?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                shortBio: 'Crea experiencias de usuario intuitivas para nuestras aplicaciones de control doméstico.',
+                bio: 'Diseñadora de experiencia de usuario con pasión por crear interfaces intuitivas y hermosas. Especializada en aplicaciones de control domótico, se enfoca en hacer que la tecnología sea accesible para todos los usuarios.',
+                skills: ['UI/UX Design', 'Figma', 'Prototipado', 'Investigación de Usuarios'],
+                experience: [
+                  { role: 'Diseñadora UX/UI', company: 'DomoticLink', duration: '2021 - Presente' },
+                  { role: 'Diseñadora de Producto', company: 'DigitalHome', duration: '2019 - 2021' },
+                  { role: 'Diseñadora Gráfica', company: 'CreativeMinds', duration: '2017 - 2019' }
+                ]
+              },
+              {
+                name: 'Javier Ramírez',
+                position: 'Técnico en Instalaciones',
+                email: 'javier@domoticlink.com',
+                phone: '+52 55 4567 8901',
+                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                shortBio: 'Experto en instalación y mantenimiento de sistemas de domótica residencial.',
+                bio: 'Técnico certificado con más de 8 años de experiencia en la instalación y mantenimiento de sistemas de domótica. Se especializa en la integración de sistemas de seguridad, iluminación y climatización inteligente.',
+                skills: ['Instalación', 'Mantenimiento', 'Redes', 'Soporte Técnico'],
+                experience: [
+                  { role: 'Técnico Senior', company: 'DomoticLink', duration: '2019 - Presente' },
+                  { role: 'Técnico en Instalaciones', company: 'SmartTech', duration: '2016 - 2019' },
+                  { role: 'Asistente Técnico', company: 'ElectroHome', duration: '2014 - 2016' }
+                ]
+              },
+              {
+                name: 'Laura Sánchez',
+                position: 'Especialista en Atención a Clientes',
+                email: 'laura@domoticlink.com',
+                phone: '+52 55 5678 9012',
+                image: 'https://images.unsplash.com/photo-1573496358773-9d29caf5f790?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                shortBio: 'Brinda soporte excepcional y soluciones personalizadas a nuestros clientes.',
+                bio: 'Profesional en atención al cliente con amplia experiencia en el sector tecnológico. Se especializa en brindar soporte técnico personalizado y garantizar la satisfacción total de los clientes con nuestros sistemas de domótica.',
+                skills: ['Atención al Cliente', 'Soporte Técnico', 'Resolución de Problemas', 'Ventas'],
+                experience: [
+                  { role: 'Especialista en Atención', company: 'DomoticLink', duration: '2020 - Presente' },
+                  { role: 'Ejecutiva de Soporte', company: 'TechSupport', duration: '2018 - 2020' },
+                  { role: 'Asesora de Ventas', company: 'ElectroShop', duration: '2016 - 2018' }
+                ]
+              }
+            ],
+            openModal(member) {
+              this.selectedMember = member;
+              this.isOpen = true;
+              document.body.style.overflow = 'hidden';
+            },
+            closeModal() {
+              this.isOpen = false;
+              document.body.style.overflow = 'auto';
+            },
+            init() {
+              // Inicializar el carrusel cuando el componente esté montado
+              this.$nextTick(() => {
+                new Swiper('.team-swiper', {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                  loop: true,
+                  autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                  },
+                  pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                  },
+                  navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                  },
+                  breakpoints: {
+                    640: {
+                      slidesPerView: 2,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                    },
+                    1280: {
+                      slidesPerView: 4,
+                    },
+                  },
+                });
+              });
+            }
+          };
+        }
+        </script>
       </main>
       
       <footer class="flex justify-center">
           <div class="flex max-w-[960px] flex-1 flex-col">
             <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
               <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-                <a class="text-[#a0adbb] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
-                <a class="text-[#a0adbb] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
-                <a class="text-[#a0adbb] text-base font-normal leading-normal min-w-40" href="#">Contact Us</a>
+                <a class="text-[#a0adbb] text-base font-normal leading-normal min-w-40" href="#">Política de Privacidad</a>
+                <a class="text-[#a0adbb] text-base font-normal leading-normal min-w-40" href="#">Términos de Servicio</a>
+                <a class="text-[#a0adbb] text-base font-normal leading-normal min-w-40" href="#">Contáctanos</a>
               </div>
-              <p class="text-[#a0adbb] text-base font-normal leading-normal">@2024 HomeSync. All rights reserved.</p>
+              <div class="flex justify-center">
+                <div class="h-16 w-16">
+                  <img src="public/image/logo.jpeg" alt="Logo DomoticLink" class="h-full w-full object-contain">
+                </div>
+              </div>
+              <p class="text-[#a0adbb] text-base font-normal leading-normal">© 2024 DomoticLink. Todos los derechos reservados.</p>
             </footer>
           </div>
-      </footer>
+
     </div>
     <!-- <script type="module" src="/public/a.js"></script> -->
 </body>
