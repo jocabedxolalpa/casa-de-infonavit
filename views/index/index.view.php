@@ -433,7 +433,7 @@
               position: 'CEO & Fundadora',
               email: 'maria@domoticlink.com',
               phone: '+52 55 1234 5678',
-              image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80',
+              image: 'public/image/ourt/dara.jpg',
               shortBio: 'Apasionada por la innovación tecnológica en el hogar.',
               bio: 'Ingeniera en Sistemas con más de 10 años de experiencia en el desarrollo de soluciones de domótica. Fundó DomoticLink con la visión de hacer los hogares más inteligentes y seguros.',
               skills: ['Liderazgo', 'Estrategia', 'Innovación', 'Tecnología'],
