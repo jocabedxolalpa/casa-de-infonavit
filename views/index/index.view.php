@@ -36,6 +36,163 @@
             object-fit: cover;
         }
     </style>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+      /* Estilos para las partículas */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+      
+      /* Contador de partículas (opcional) */
+      .count-particles {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #fff;
+        font-size: 0.8em;
+        font-family: Arial, Helvetica, sans-serif;
+        pointer-events: none;
+        z-index: 1000;
+      }
+      
+      /* Estilos existentes para el modelo 3D */
+      #model-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+      }
+      #model-container canvas {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+      }
+    </style>
+    <script>
+      // Configuración de partículas
+      document.addEventListener('DOMContentLoaded', function() {
+        particlesJS('particles-js', {
+          "particles": {
+            "number": {
+              "value": 380,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#ffffff"
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              }
+            },
+            "opacity": {
+              "value": 0.5,
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 3,
+              "random": true,
+              "anim": {
+                "enable": false,
+                "speed": 40,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#ffffff",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 6,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "window",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "grab"
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 200,
+                "line_linked": {
+                  "opacity": 0.8
+                }
+              },
+              "bubble": {
+                "distance": 250,
+                "size": 10,
+                "duration": 0.5,
+                "opacity": 0.8,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 150,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 8
+              },
+              "remove": {
+                "particles_nb": 2
+              },
+              "attract": {
+                "enable": true,
+                "rotateX": 1000,
+                "rotateY": 1200
+              }
+            }
+          },
+          "retina_detect": true
+        });
+      });
+    </script>
     <script>
       // Función para alternar el menú móvil
       function toggleMobileMenu() {
@@ -413,6 +570,12 @@
     <link rel="icon" href="publucimg/logo.jpg" />
   </head>
   <body class="text-gray-900" style="background: linear-gradient(114deg, rgba(43, 214, 255, 1) 0%, rgba(36, 179, 247, 1) 20%, rgba(0, 164, 244, 1) 40%, rgba(0, 138, 236, 1) 60%, rgba(0, 69, 180, 1) 80%);">
+    <!-- Contenedor de partículas -->
+    <div id="particles-js"></div>
+    <!-- Contador de partículas (opcional) -->
+    <div class="count-particles">
+      <span class="js-count-particles">--</span> partículas
+    </div>
 
 
     <!-- NAV -->
