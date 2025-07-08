@@ -7,13 +7,21 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/l
 // import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { gsap } from '../node_modules/gsap/index.js';
 
-const camera = new THREE.PerspectiveCamera(
-    10,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
-camera.position.z = 13;
+// Función para ajustar la cámara según el tamaño de la pantalla
+function setupCamera() {
+    const isMobile = window.innerWidth <= 768;
+    const fov = isMobile ? 15 : 10;
+    const aspect = window.innerWidth / window.innerHeight;
+    const near = 0.1;
+    const far = 1000;
+    
+    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+    camera.position.z = isMobile ? 18 : 13;
+    
+    return camera;
+}
+
+let camera = setupCamera();
 
 const scene = new THREE.Scene();
 let model;
@@ -33,9 +41,37 @@ loader.load('public/model/logo.glb',
     function (xhr) {},
     function (error) {}
 );
-const renderer = new THREE.WebGLRenderer({ alpha: true });
+// Configurar el renderizador
+const renderer = new THREE.WebGLRenderer({ 
+    alpha: true,
+    antialias: true // Suavizado para mejor calidad
+});
+
+// Función para manejar el redimensionamiento
+function onWindowResize() {
+    const isMobile = window.innerWidth <= 768;
+    
+    // Actualizar cámara
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.position.z = isMobile ? 18 : 13;
+    camera.fov = isMobile ? 15 : 10;
+    camera.updateProjectionMatrix();
+    
+    // Actualizar renderizador
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limitar píxel ratio para mejor rendimiento
+}
+
+// Configuración inicial
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.getElementById('model-container').appendChild(renderer.domElement);
+
+// Escuchar cambios de tamaño de ventana
+window.addEventListener('resize', onWindowResize);
+
+// Llamar una vez al inicio para configurar correctamente
+document.addEventListener('DOMContentLoaded', onWindowResize);
 
 // light
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.3);
@@ -48,7 +84,13 @@ scene.add(topLight);
 const reRender3D = () => {
     requestAnimationFrame(reRender3D);
     if (model) {
-        model.rotation.y += 0.01; // Girar el modelo continuamente
+        // Reducir la velocidad de rotación en móviles
+        const rotationSpeed = window.innerWidth <= 768 ? 0.005 : 0.01;
+        model.rotation.y += rotationSpeed;
+        
+        // Ajustar escala en móviles
+        const scale = window.innerWidth <= 768 ? 0.8 : 1;
+        model.scale.set(scale, scale, scale);
     }
     renderer.render(scene, camera);
     if (mixer) mixer.update(0.02);

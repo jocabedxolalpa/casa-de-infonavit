@@ -29,11 +29,44 @@
             height: 100vh;
             z-index: -1;
             pointer-events: none;
+            overflow: hidden;
         }
         #model-container canvas {
             width: 100% !important;
             height: 100% !important;
-            object-fit: cover;
+            object-fit: contain;
+        }
+        
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
+            #model-container {
+                height: 50vh; /* Reducir altura en móviles */
+                top: auto;
+                bottom: 0;
+            }
+            
+            /* Asegurar que el contenido no quede detrás del modelo en móviles */
+            main {
+                padding-bottom: 50vh;
+                margin-top: 0;
+            }
+            
+            /* Ajustar el espaciado del contenido principal */
+            .section {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+        
+        /* Ajustes para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            #model-container {
+                height: 40vh;
+            }
+            
+            main {
+                padding-bottom: 40vh;
+            }
         }
     </style>
     <!-- Particles.js -->
@@ -60,22 +93,6 @@
         font-family: Arial, Helvetica, sans-serif;
         pointer-events: none;
         z-index: 1000;
-      }
-      
-      /* Estilos existentes para el modelo 3D */
-      #model-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: -1;
-        pointer-events: none;
-      }
-      #model-container canvas {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover;
       }
     </style>
     <script>
