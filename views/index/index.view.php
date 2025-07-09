@@ -5,28 +5,446 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DomoticLink</title>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Tailwind CDN + plugins -->
   <!-- Google Font example -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
- <link rel="stylesheet" href="public/css/estayls.css" />
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    /* Estilos del Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1a1a2e; /* Fondo oscuro */
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.75s ease, visibility 0.75s ease;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-content {
+      text-align: center;
+    }
+
+    .preloader-content .spinner {
+      width: 80px;
+      height: 80px;
+      animation: spin 2s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    .preloader-content h1 {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Dark Mode Styles */
+    body.dark header nav {
+      background: rgba(10, 10, 20, 0.9) !important;
+      backdrop-filter: blur(5px);
+    }
+
+    body.dark .mobile-menu {
+      background: rgba(10, 10, 20, 0.95) !important;
+    }
+
+    /* Estilos para el Panel de Control */
+    .control-card {
+      background: rgba(32, 38, 45, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #3f4d5a;
+      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .control-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .control-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .control-button.active {
+      background-color: #28a745; /* Verde cuando está activo */
+    }
+    .control-button:hover {
+      background-color: #0056b3;
+    }
+    .control-button.active:hover {
+      background-color: #218838;
+    }
+  </style>
+  <link rel="stylesheet" href="public/css/estayls.css" />
 
   <!-- Estilos para el modelo 3D -->
-  
- 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
 
   <!-- Icon -->
   <link rel="icon" href="publucimg/logo.jpg" />
+<style>
+  
+  body {
+      font-family: 'Montserrat', sans-serif;
+      background-image: linear-gradient(220.55deg, #eaeaea 0%, #8b8b8b 100%);
+    }
+
+    /* Altura fija del header para el scroll-margin */
+    section {
+      scroll-margin-top: 5rem;
+    }
+
+    #model-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    #model-container canvas {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain;
+    }
+
+    /* Ajustes para móviles */
+    @media (max-width: 768px) {
+      #model-container {
+        height: 50vh;
+        /* Reducir altura en móviles */
+        top: auto;
+        bottom: 0;
+      }
+
+      /* Asegurar que el contenido no quede detrás del modelo en móviles */
+      main {
+        padding-bottom: 50vh;
+        margin-top: 0;
+      }
+
+      /* Ajustar el espaciado del contenido principal */
+      .section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+    }
+
+    /* Ajustes para tablets */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      #model-container {
+        height: 40vh;
+      }
+
+      main {
+        padding-bottom: 40vh;
+      }
+    }
+  
+
+    /* Estilos para las partículas */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Contador de partículas (opcional) */
+    .count-particles {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #fff;
+      font-size: 0.8em;
+      font-family: Arial, Helvetica, sans-serif;
+      pointer-events: none;
+      z-index: 1000;
+    }
+   
+    /* Estilos para el botón de menú móvil */
+    #menu-button {
+      display: none;
+      /* Ocultar por defecto */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+      position: relative;
+    }
+
+    #menu-button span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: white;
+      margin: 4px 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+    }
+
+    #menu-button.open span:first-child {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    #menu-button.open span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    #menu-button.open span:last-child {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* Estilos para el menú móvil */
+    #mobile-menu {
+      position: fixed;
+      top: 80px;
+      /* Ajustado para que quede justo debajo del header fijo */
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #151a1e;
+      z-index: 999;
+      overflow-y: auto;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #mobile-menu.active {
+      transform: translateX(0);
+      display: block;
+    }
+
+    /* Ocultar menú móvil en desktop */
+    @media (min-width: 1024px) {
+      #mobile-menu {
+        display: none !important;
+      }
+    }
+
+    #mobile-menu .max-w-md {
+      margin: 0 auto;
+      background: #1e252b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    #mobile-menu a {
+      display: block;
+      padding: 12px 16px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border-radius: 8px;
+      margin: 4px 0;
+    }
+
+    #mobile-menu a:hover {
+      background-color: #2c363f;
+    }
+
+    /* Estilos para el modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+
+    .dark .modal-content {
+      background-color: #1e293b;
+      color: white;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Estilos para el toggle de modo oscuro */
+    .checkbox-wrapper-54 input[type="checkbox"] {
+      visibility: hidden;
+      display: none;
+    }
+
+    .checkbox-wrapper-54 *,
+    .checkbox-wrapper-54 ::after,
+    .checkbox-wrapper-54 ::before {
+      box-sizing: border-box;
+    }
+
+    .checkbox-wrapper-54 .switch {
+      --width-of-switch: 3.5em;
+      --height-of-switch: 2em;
+      --size-of-icon: 1.4em;
+      --slider-offset: 0.3em;
+      position: relative;
+      width: var(--width-of-switch);
+      height: var(--height-of-switch);
+      display: inline-block;
+    }
+
+    .checkbox-wrapper-54 .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #f4f4f5;
+      transition: .4s;
+      border-radius: 30px;
+    }
+
+    .dark .checkbox-wrapper-54 .slider {
+      background-color: #374151;
+    }
+
+    .checkbox-wrapper-54 .slider:before {
+      position: absolute;
+      content: "";
+      height: var(--size-of-icon, 1.4em);
+      width: var(--size-of-icon, 1.4em);
+      border-radius: 20px;
+      left: var(--slider-offset, 0.3em);
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+      transition: .4s;
+    }
+
+    .checkbox-wrapper-54 input:checked+.slider {
+      background-color: #303136;
+    }
+
+    .checkbox-wrapper-54 input:checked+.slider:before {
+      left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+      background: #303136;
+      box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+    }
+
+    /* Media Queries */
+    @media (max-width: 1023px) {
+      #desktop-menu {
+        display: none !important;
+      }
+
+      #menu-button {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      #mobile-menu {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      #mobile-menu {
+        display: none !important;
+      }
+    }
+
+    /* Estilos para las nuevas secciones */
+    .app-section,
+    .virtual-tour-section {
+      padding: 4rem 1rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .dark .app-section,
+    .dark .virtual-tour-section {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  
+</style>
 </head>
 
 <body class="text-gray-900" style="background: linear-gradient(114deg, rgba(43, 214, 255, 1) 0%, rgba(36, 179, 247, 1) 20%, rgba(0, 164, 244, 1) 40%, rgba(0, 138, 236, 1) 60%, rgba(0, 69, 180, 1) 80%);">
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="public/image/logo.png" alt="Logo DomoticLink" class="spinner">
+      <h1>DomoticLink</h1>
+    </div>
+  </div>
   <!-- Contenedor de partículas -->
   <div id="particles-js"></div>
   <!-- Contador de partículas (opcional) -->
   <!-- <div class="count-particles">
       <span class="js-count-particles">--</span> partículas
-    </div> -->
+    </div -->
 
 
   <!-- NAV -->
@@ -81,7 +499,7 @@
         </button>
     </nav>
     <!-- Mobile menu -->
-    <div x-show="open" x-transition class="lg:hidden bg-gray-800/95 text-gray-100 backdrop-blur p-6 space-y-4">
+          <div x-show="open" x-transition class="lg:hidden bg-gray-800/95 text-gray-100 backdrop-blur p-6 space-y-4 mobile-menu">
       <a @click="open=false" href="#section1" class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors">Inicio</a>
       <a @click="open=false" href="#section2" class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors">Nosotros</a>
       <a @click="open=false" href="#section3" class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors">Servicios</a>
@@ -272,6 +690,34 @@
         </a>
       </div>
     </section>
+
+    <!-- Panel de Control Domótico -->
+    <section id="control-panel" class="section space-y-4 scroll-mt-20">
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Panel de Control</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+            <!-- Control de Puerta -->
+            <div class="control-card">
+                <h3 class="font-bold text-lg">Puerta Principal</h3>
+                <button onclick="toggleDevice('puerta', this)" class="control-button">Alternar</button>
+            </div>
+            <!-- Control de Garaje -->
+            <div class="control-card">
+                <h3 class="font-bold text-lg">Garaje</h3>
+                <button onclick="toggleDevice('garaje', this)" class="control-button">Alternar</button>
+            </div>
+            <!-- Control de Luces -->
+            <div class="control-card">
+                <h3 class="font-bold text-lg">Luces Global</h3>
+                <button onclick="toggleDevice('todo', this)" class="control-button">Alternar</button>
+            </div>
+            <!-- Control de Extractor -->
+            <div class="control-card">
+                <h3 class="font-bold text-lg">Extractor</h3>
+                <button onclick="toggleDevice('extractor', this)" class="control-button">Alternar</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Sección de Tour Virtual -->
     <section id="virtual-tour" class="virtual-tour-section scroll-mt-20">
       <div id="tour-initial-content">
@@ -279,7 +725,7 @@
         <p class="text-base font-normal leading-normal pb-6 px-4">
           Explora una casa inteligente con nuestro tour virtual interactivo. Descubre cómo la tecnología puede transformar tu hogar.
         </p>
-        <div class="relative overflow-hidden rounded-xl mx-4 aspect-video bg-gray-800 flex items-center justify-center">
+                  <div class="relative overflow-hidden rounded-xl mx-4 aspect-video md:aspect-video bg-gray-800 flex items-center justify-center" style="min-height: 300px;">
           <div class="text-center p-8">
             <svg class="w-16 h-16 mx-auto text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
@@ -352,14 +798,14 @@
       <!-- Modal Simple -->
       <div x-show="isOpen"
         x-cloak
-        @click.self="isOpen = false"
+        @click.self="closeModal()"
         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-70">
         <div class="bg-[#20262d] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
           <div class="p-6">
             <!-- Encabezado -->
             <div class="flex justify-between items-start mb-6">
               <h3 class="text-2xl font-bold text-white" x-text="selectedMember.name"></h3>
-              <button @click="isOpen = false" class="text-gray-400 hover:text-white">
+              <button @click="closeModal()" class="text-gray-400 hover:text-white">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -428,161 +874,72 @@
             skills: [],
             experience: []
           },
-          teamMembers: [{
-              name: 'María González',
-              position: 'CEO & Fundadora',
-              email: 'maria@domoticlink.com',
-              phone: '+52 55 1234 5678',
+          teamMembers: [
+            {
+              name: 'Dara',
+              position: 'Líder del Equipo',
+              email: 'dara@example.com',
+              phone: '+52 55 1111 2222',
               image: 'public/image/ourt/dara.jpg',
-              shortBio: 'Apasionada por la innovación tecnológica en el hogar.',
-              bio: 'Ingeniera en Sistemas con más de 10 años de experiencia en el desarrollo de soluciones de domótica. Fundó DomoticLink con la visión de hacer los hogares más inteligentes y seguros.',
-              skills: ['Liderazgo', 'Estrategia', 'Innovación', 'Tecnología'],
-              experience: [{
-                  role: 'CEO & Fundadora',
-                  company: 'DomoticLink',
-                  duration: '2018 - Presente'
-                },
-                {
-                  role: 'Directora de Tecnología',
-                  company: 'SmartHomes',
-                  duration: '2015 - 2018'
-                },
-                {
-                  role: 'Ingeniera de Software',
-                  company: 'TechSolutions',
-                  duration: '2012 - 2015'
-                }
-              ]
+              shortBio: 'Líder y visionaria del proyecto.',
+              bio: 'Dara es la fuerza impulsora detrás de la visión del equipo, combinando liderazgo con una profunda experiencia técnica para guiar al equipo hacia el éxito.',
+              skills: ['Liderazgo', 'Gestión de Proyectos', 'Arquitectura de Software'],
+              experience: [{ role: 'Líder de Proyecto', company: 'Innovatech', duration: '2020 - Presente' }]
             },
             {
-              name: 'Carlos Mendoza',
-              position: 'Director de Operaciones',
-              email: 'carlos@domoticlink.com',
-              phone: '+52 55 2345 6789',
-              image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-              shortBio: 'Experto en gestión de proyectos y operaciones.',
-              bio: 'Ingeniero Industrial especializado en gestión de operaciones con más de 12 años de experiencia en la implementación de sistemas tecnológicos a gran escala.',
-              skills: ['Gestión de Proyectos', 'Operaciones', 'Logística', 'Planificación'],
-              experience: [{
-                  role: 'Director de Operaciones',
-                  company: 'DomoticLink',
-                  duration: '2019 - Presente'
-                },
-                {
-                  role: 'Gerente de Proyectos',
-                  company: 'HomeTech',
-                  duration: '2016 - 2019'
-                },
-                {
-                  role: 'Coordinador de Operaciones',
-                  company: 'SmartLiving',
-                  duration: '2013 - 2016'
-                }
-              ]
+              name: 'Edwin',
+              position: 'Desarrollador Backend',
+              email: 'edwin@example.com',
+              phone: '+52 55 3333 4444',
+              image: 'public/image/ourt/edwin.jpg',
+              shortBio: 'El arquitecto de nuestra infraestructura.',
+              bio: 'Edwin se especializa en la construcción de sistemas robustos y escalables, asegurando que toda la lógica del servidor funcione a la perfección.',
+              skills: ['Node.js', 'Bases de Datos', 'API REST', 'Microservicios'],
+              experience: [{ role: 'Ingeniero Backend', company: 'Data Systems', duration: '2019 - Presente' }]
             },
             {
-              name: 'Ana Torres',
+              name: 'Jocabed',
               position: 'Diseñadora UX/UI',
-              email: 'ana@domoticlink.com',
-              phone: '+52 55 3456 7890',
-              image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-              shortBio: 'Creadora de experiencias de usuario excepcionales.',
-              bio: 'Diseñadora de experiencia de usuario con amplia experiencia en la creación de interfaces intuitivas para aplicaciones de domótica. Su enfoque centrado en el usuario ha mejorado significativamente la usabilidad de nuestras soluciones.',
-              skills: ['Diseño UX/UI', 'Investigación de Usuario', 'Prototipado', 'Diseño de Interacción'],
-              experience: [{
-                  role: 'Diseñadora UX/UI',
-                  company: 'DomoticLink',
-                  duration: '2021 - Presente'
-                },
-                {
-                  role: 'Diseñadora de Producto',
-                  company: 'DigitalHome',
-                  duration: '2019 - 2021'
-                },
-                {
-                  role: 'Diseñadora Gráfica',
-                  company: 'CreativeMinds',
-                  duration: '2017 - 2019'
-                }
-              ]
+              email: 'jocabed@example.com',
+              phone: '+52 55 5555 6666',
+              image: 'public/image/ourt/jocabed.jpg',
+              shortBio: 'Creadora de experiencias de usuario.',
+              bio: 'Jocabed diseña interfaces intuitivas y atractivas, enfocándose en que la interacción del usuario con la tecnología sea simple y agradable.',
+              skills: ['Diseño UX/UI', 'Prototipado', 'Figma', 'Adobe XD'],
+              experience: [{ role: 'Diseñadora UX/UI', company: 'Creative Minds', duration: '2021 - Presente' }]
             },
             {
-              name: 'Jorge Sánchez',
-              position: 'Gerente de Ventas',
-              email: 'jorge@domoticlink.com',
-              phone: '+52 55 4567 8901',
-              image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-              bio: 'Experto en relaciones con clientes y estrategias de venta. Comprometido con encontrar la propiedad perfecta para cada cliente.',
-              shortBio: 'Especialista en ventas y atención al cliente.',
-              skills: ['Ventas', 'Atención al Cliente', 'Negociación', 'CRM'],
-              experience: [{
-                  role: 'Gerente de Ventas',
-                  company: 'DomoticLink',
-                  duration: '2020 - Presente'
-                },
-                {
-                  role: 'Ejecutivo de Ventas',
-                  company: 'HomeTech',
-                  duration: '2018 - 2020'
-                },
-                {
-                  role: 'Asesor Comercial',
-                  company: 'SmartLiving',
-                  duration: '2016 - 2018'
-                }
-              ]
+              name: 'Jona',
+              position: 'Desarrollador Frontend',
+              email: 'jona@example.com',
+              phone: '+52 55 7777 8888',
+              image: 'public/image/ourt/jona.jpg',
+              shortBio: 'El mago de la interfaz de usuario.',
+              bio: 'Jona transforma los diseños en realidad, escribiendo código limpio y eficiente para crear interfaces de usuario dinámicas y responsivas.',
+              skills: ['JavaScript', 'React', 'Vue.js', 'CSS Moderno'],
+              experience: [{ role: 'Desarrollador Frontend', company: 'Web Solutions', duration: '2018 - Presente' }]
             },
             {
-              name: 'Laura Torres',
-              position: 'Directora de Marketing',
-              email: 'laura@domoticlink.com',
-              phone: '+52 55 5678 9012',
-              image: 'https://images.unsplash.com/photo-1508214758996-8f69a0a3c32a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-              bio: 'Estratega de marketing digital especializada en el sector inmobiliario. Apasionada por contar historias que conecten con las aspiraciones de nuestros clientes.',
-              shortBio: 'Experta en estrategias de marketing digital.',
-              skills: ['Marketing Digital', 'Redes Sociales', 'Contenido', 'Análisis de Datos'],
-              experience: [{
-                  role: 'Directora de Marketing',
-                  company: 'DomoticLink',
-                  duration: '2020 - Presente'
-                },
-                {
-                  role: 'Gerente de Marketing Digital',
-                  company: 'DigitalHome',
-                  duration: '2018 - 2020'
-                },
-                {
-                  role: 'Especialista en Redes Sociales',
-                  company: 'CreativeMinds',
-                  duration: '2016 - 2018'
-                }
-              ]
+              name: 'Laura',
+              position: 'Especialista en QA',
+              email: 'laura@example.com',
+              phone: '+52 55 9999 0000',
+              image: 'public/image/ourt/laura.jpg',
+              shortBio: 'Garantiza la calidad de nuestro software.',
+              bio: 'Laura es meticulosa en la detección de errores, asegurando que cada producto que lanzamos cumpla con los más altos estándares de calidad.',
+              skills: ['Testing Manual', 'Automatización de Pruebas', 'Selenium', 'Jira'],
+              experience: [{ role: 'Ingeniera de Calidad', company: 'Tech Labs', duration: '2019 - Presente' }]
             },
             {
-              name: 'Roberto Mendoza',
-              position: 'Asesor Legal',
-              email: 'roberto@domoticlink.com',
-              phone: '+52 55 6789 0123',
-              image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-              bio: 'Abogado especializado en derecho inmobiliario con más de 10 años de experiencia. Garantiza que todas nuestras transacciones sean seguras y cumplan con la normativa vigente.',
-              shortBio: 'Experto en derecho inmobiliario y contratos.',
-              skills: ['Derecho Inmobiliario', 'Contratos', 'Asesoría Legal', 'Normativa'],
-              experience: [{
-                  role: 'Asesor Legal',
-                  company: 'DomoticLink',
-                  duration: '2019 - Presente'
-                },
-                {
-                  role: 'Abogado Senior',
-                  company: 'LegalCorp',
-                  duration: '2016 - 2019'
-                },
-                {
-                  role: 'Asociado Legal',
-                  company: 'Derecho & Asociados',
-                  duration: '2013 - 2016'
-                }
-              ]
+              name: 'Manny',
+              position: 'Experto en Domótica',
+              email: 'manny@example.com',
+              phone: '+52 55 1234 5678',
+              image: 'public/image/ourt/manny.jpg',
+              shortBio: 'El cerebro detrás de la casa inteligente.',
+              bio: 'Manny es el especialista en hardware y automatización del hogar, conectando el mundo físico con el digital para crear una experiencia de hogar inteligente y cohesiva.',
+              skills: ['Arduino', 'ESP32', 'IoT', 'Integración de Hardware'],
+              experience: [{ role: 'Especialista en IoT', company: 'Smart Homes Inc.', duration: '2017 - Presente' }]
             }
           ],
           openModal(member) {
@@ -681,7 +1038,7 @@
             <img src="public/image/logo.png" alt="Logo DomoticLink" class="h-full w-full object-contain">
           </div>
         </div>
-        <p class="text-[#a0adbb] text-base font-normal leading-normal">© 2024 DomoticLink. Todos los derechos reservados.</p>
+        <p class="text-[#a0adbb] text-base font-normal leading-normal"> 2024 DomoticLink. Todos los derechos reservados.</p>
     </div>
   </footer>
 
@@ -695,6 +1052,173 @@
   <script type="module" src="public/a.js"></script>
   <script type="module" src="public/js/mein.js"></script>
 
-</body>
+    <!-- Botones Flotantes -->
+    <a href="https://wa.me/5211234567890?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <button id="toggle-particles-btn" title="Activar/Desactivar Partículas">
+        <i class="fas fa-atom"></i>
+    </button>
 
+    <style>
+        .whatsapp-btn, #toggle-particles-btn {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 1000;
+        }
+        .whatsapp-btn:hover, #toggle-particles-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        .whatsapp-btn {
+            background-color: #25D366; /* Verde de WhatsApp */
+            bottom: 20px;
+            right: 20px;
+        }
+        #toggle-particles-btn {
+            background-color: #007bff; /* Azul */
+            bottom: 20px;
+            left: 20px;
+        }
+        #toggle-particles-btn.off {
+            background-color: #6c757d; /* Gris */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('toggle-particles-btn');
+            const particlesContainer = document.getElementById('particles-js');
+
+            // Estado inicial de las partículas (activadas por defecto)
+            let particlesEnabled = true;
+
+            toggleBtn.addEventListener('click', () => {
+                if (particlesEnabled) {
+                    particlesContainer.style.display = 'none';
+                    toggleBtn.classList.add('off');
+                } else {
+                    particlesContainer.style.display = 'block';
+                    toggleBtn.classList.remove('off');
+                }
+                particlesEnabled = !particlesEnabled;
+            });
+        });
+    </script>
+
+    <!-- Script para el Preloader -->
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('hidden');
+        });
+    </script>
+
+    <!-- Script para Panel de Control -->
+    <script>
+        const esp32_ip = '192.168.1.100'; // <-- IMPORTANTE: Reemplaza con la IP de tu ESP32
+
+        // Estado inicial de los dispositivos (false = apagado/cerrado)
+        const deviceStatus = {
+            puerta: false,
+            garaje: false,
+            todo: false, // Para luces globales
+            extractor: false
+        };
+
+        function toggleDevice(deviceName, button) {
+            // Alternar el estado
+            deviceStatus[deviceName] = !deviceStatus[deviceName];
+            const isActive = deviceStatus[deviceName];
+
+            let command_on, command_off;
+
+            switch(deviceName) {
+                case 'puerta':
+                    command_on = 'abrir_puerta';
+                    command_off = 'cerrar_puerta';
+                    break;
+                case 'garaje':
+                    command_on = 'abrir_garaje';
+                    command_off = 'cerrar_garaje';
+                    break;
+                case 'todo':
+                    command_on = 'encender_todo';
+                    command_off = 'apagar_todo';
+                    break;
+                case 'extractor':
+                    command_on = 'iniciar_extractor';
+                    command_off = 'detener_extractor';
+                    break;
+            }
+
+            const command = isActive ? command_on : command_off;
+            
+            fetch(`http://${esp32_ip}/${command}`)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    // Actualizar el estilo del botón
+                    if (isActive) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('No se pudo conectar con la casa. Verifica la IP y la conexión.');
+                    // Revertir el estado si falla la comunicación
+                    deviceStatus[deviceName] = !isActive;
+                });
+        }
+    </script>
+
+    <!-- Dark Mode Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            // Función para aplicar el tema
+            const applyTheme = (isDark) => {
+                if (isDark) {
+                    body.classList.add('dark');
+                    darkModeToggle.checked = true;
+                } else {
+                    body.classList.remove('dark');
+                    darkModeToggle.checked = false;
+                }
+            };
+
+            // Comprobar preferencia guardada en localStorage
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme) {
+                applyTheme(savedTheme === 'true');
+            } else {
+                // Opcional: detectar preferencia del sistema operativo
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                applyTheme(prefersDark);
+            }
+
+            // Event listener para el botón
+            darkModeToggle.addEventListener('change', function () {
+                const isDark = this.checked;
+                applyTheme(isDark);
+                localStorage.setItem('darkMode', isDark);
+            });
+        });
+    </script>
+  </body>
 </html>
