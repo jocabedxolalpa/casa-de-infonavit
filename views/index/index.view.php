@@ -876,14 +876,14 @@
           },
           teamMembers: [
             {
-              name: 'Dara',
-              position: 'Líder del Equipo',
-              email: 'dara@example.com',
-              phone: '+52 55 1111 2222',
-              image: 'public/image/ourt/dara.jpg',
-              shortBio: 'Líder y visionaria del proyecto.',
-              bio: 'Dara es la fuerza impulsora detrás de la visión del equipo, combinando liderazgo con una profunda experiencia técnica para guiar al equipo hacia el éxito.',
-              skills: ['Liderazgo', 'Gestión de Proyectos', 'Arquitectura de Software'],
+              name: 'Jocabed Xolalpa Hernandez',
+              position: 'Diseñadora UX/U',
+              email: 'jocabedxolalpa@gmail.com',
+              phone: '+52 5578496609',
+              image: 'public/image/imagenes WEBP/jocabed.webp',
+              shortBio: 'Creadora de experiencias de usuario.',
+              bio: 'Jocabed diseña interfaces intuitivas y atractivas, enfocándose en que la interacción del usuario con la tecnología sea simple y agradable.',
+              skills:  ['Diseño UX/UI', 'Prototipado', 'Figma', 'Adobe XD'],
               experience: [{ role: 'Líder de Proyecto', company: 'Innovatech', duration: '2020 - Presente' }]
             },
             {
@@ -898,10 +898,10 @@
               experience: [{ role: 'Ingeniero Backend', company: 'Data Systems', duration: '2019 - Presente' }]
             },
             {
-              name: 'Jocabed',
+              name: 'Dara Xolalpa Hernandez',
               position: 'Diseñadora UX/UI',
-              email: 'jocabed@example.com',
-              phone: '+52 55 5555 6666',
+              email: 'daraxolalpahernandez@gmail.com',
+              phone: '+52 5629795893',
               image: 'public/image/ourt/jocabed.jpg',
               shortBio: 'Creadora de experiencias de usuario.',
               bio: 'Jocabed diseña interfaces intuitivas y atractivas, enfocándose en que la interacción del usuario con la tecnología sea simple y agradable.',
@@ -909,10 +909,10 @@
               experience: [{ role: 'Diseñadora UX/UI', company: 'Creative Minds', duration: '2021 - Presente' }]
             },
             {
-              name: 'Jona',
-              position: 'Desarrollador Frontend',
-              email: 'jona@example.com',
-              phone: '+52 55 7777 8888',
+              name: 'Jonathan Jair Hernandez Gonzalez',
+              position: 'Programador Full stack',
+              email: 'hjair200112@gmail.com',
+              phone: '+52 55 19751575',
               image: 'public/image/ourt/jona.jpg',
               shortBio: 'El mago de la interfaz de usuario.',
               bio: 'Jona transforma los diseños en realidad, escribiendo código limpio y eficiente para crear interfaces de usuario dinámicas y responsivas.',
@@ -921,7 +921,7 @@
             },
             {
               name: 'Laura',
-              position: 'Especialista en QA',
+              position: 'Diseñadora UX/UI',
               email: 'laura@example.com',
               phone: '+52 55 9999 0000',
               image: 'public/image/ourt/laura.jpg',
