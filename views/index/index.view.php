@@ -884,11 +884,10 @@
             skills: [],
             experience: []
           },
-<<<<<<< HEAD
           teamMembers: [
             {
               name: 'Jocabed Xolalpa Hernandez',
-              position: 'Diseñadora UX/U',
+              position: 'Diseñadora UX/UI',
               email: 'jocabedxolalpa@gmail.com',
               phone: '+52 5578496609',
               image: 'public/image/imagenes WEBP/jocabed.webp',
@@ -896,22 +895,6 @@
               bio: 'Jocabed diseña interfaces intuitivas y atractivas, enfocándose en que la interacción del usuario con la tecnología sea simple y agradable.',
               skills:  ['Diseño UX/UI', 'Prototipado', 'Figma', 'Adobe XD'],
               experience: [{ role: 'Líder de Proyecto', company: 'Innovatech', duration: '2020 - Presente' }]
-=======
-          teamMembers: [{
-              name: 'Dara',
-              position: 'Líder del Equipo',
-              email: 'dara@example.com',
-              phone: '+52 55 1111 2222',
-              image: 'public/image/ourt/dara.jpg',
-              shortBio: 'Líder y visionaria del proyecto.',
-              bio: 'Dara es la fuerza impulsora detrás de la visión del equipo, combinando liderazgo con una profunda experiencia técnica para guiar al equipo hacia el éxito.',
-              skills: ['Liderazgo', 'Gestión de Proyectos', 'Arquitectura de Software'],
-              experience: [{
-                role: 'Líder de Proyecto',
-                company: 'Innovatech',
-                duration: '2020 - Presente'
-              }]
->>>>>>> 8236a5081ecc455f8bac7e351d3d38c2e8e04226
             },
             {
               name: 'Edwin',
@@ -935,7 +918,7 @@
               phone: '+52 5629795893',
               image: 'public/image/ourt/jocabed.jpg',
               shortBio: 'Creadora de experiencias de usuario.',
-              bio: 'Jocabed diseña interfaces intuitivas y atractivas, enfocándose en que la interacción del usuario con la tecnología sea simple y agradable.',
+              bio: 'Dara diseña interfaces intuitivas y atractivas, enfocándose en que la interacción del usuario con la tecnología sea simple y agradable.',
               skills: ['Diseño UX/UI', 'Prototipado', 'Figma', 'Adobe XD'],
               experience: [{
                 role: 'Diseñadora UX/UI',
