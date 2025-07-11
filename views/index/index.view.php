@@ -25,7 +25,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #1a1a2e; /* Fondo oscuro */
+      background-color: #1a1a2e;
+      /* Fondo oscuro */
       z-index: 9999;
       display: flex;
       justify-content: center;
@@ -59,8 +60,13 @@
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     /* Dark Mode Styles */
@@ -83,10 +89,12 @@
       color: #ffffff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .control-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
+
     .control-button {
       background-color: #007bff;
       color: white;
@@ -98,12 +106,16 @@
       font-weight: bold;
       transition: background-color 0.3s ease;
     }
+
     .control-button.active {
-      background-color: #28a745; /* Verde cuando está activo */
+      background-color: #28a745;
+      /* Verde cuando está activo */
     }
+
     .control-button:hover {
       background-color: #0056b3;
     }
+
     .control-button.active:hover {
       background-color: #218838;
     }
@@ -115,9 +127,8 @@
 
   <!-- Icon -->
   <link rel="icon" href="publucimg/logo.jpg" />
-<style>
-  
-  body {
+  <style>
+    body {
       font-family: 'Montserrat', sans-serif;
       background-image: linear-gradient(220.55deg, #eaeaea 0%, #8b8b8b 100%);
     }
@@ -176,7 +187,7 @@
         padding-bottom: 40vh;
       }
     }
-  
+
 
     /* Estilos para las partículas */
     #particles-js {
@@ -200,7 +211,7 @@
       pointer-events: none;
       z-index: 1000;
     }
-   
+
     /* Estilos para el botón de menú móvil */
     #menu-button {
       display: none;
@@ -427,8 +438,7 @@
     .dark .virtual-tour-section {
       background-color: rgba(0, 0, 0, 0.2);
     }
-  
-</style>
+  </style>
 </head>
 
 <body class="text-gray-900" style="background: linear-gradient(114deg, rgba(43, 214, 255, 1) 0%, rgba(36, 179, 247, 1) 20%, rgba(0, 164, 244, 1) 40%, rgba(0, 138, 236, 1) 60%, rgba(0, 69, 180, 1) 80%);">
@@ -499,7 +509,7 @@
         </button>
     </nav>
     <!-- Mobile menu -->
-          <div x-show="open" x-transition class="lg:hidden bg-gray-800/95 text-gray-100 backdrop-blur p-6 space-y-4 mobile-menu">
+    <div x-show="open" x-transition class="lg:hidden bg-gray-800/95 text-gray-100 backdrop-blur p-6 space-y-4 mobile-menu">
       <a @click="open=false" href="#section1" class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors">Inicio</a>
       <a @click="open=false" href="#section2" class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors">Nosotros</a>
       <a @click="open=false" href="#section3" class="block py-3 px-4 text-white hover:bg-[#2c363f] rounded-lg transition-colors">Servicios</a>
@@ -693,29 +703,29 @@
 
     <!-- Panel de Control Domótico -->
     <section id="control-panel" class="section space-y-4 scroll-mt-20">
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Panel de Control</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
-            <!-- Control de Puerta -->
-            <div class="control-card">
-                <h3 class="font-bold text-lg">Puerta Principal</h3>
-                <button onclick="toggleDevice('puerta', this)" class="control-button">Alternar</button>
-            </div>
-            <!-- Control de Garaje -->
-            <div class="control-card">
-                <h3 class="font-bold text-lg">Garaje</h3>
-                <button onclick="toggleDevice('garaje', this)" class="control-button">Alternar</button>
-            </div>
-            <!-- Control de Luces -->
-            <div class="control-card">
-                <h3 class="font-bold text-lg">Luces Global</h3>
-                <button onclick="toggleDevice('todo', this)" class="control-button">Alternar</button>
-            </div>
-            <!-- Control de Extractor -->
-            <div class="control-card">
-                <h3 class="font-bold text-lg">Extractor</h3>
-                <button onclick="toggleDevice('extractor', this)" class="control-button">Alternar</button>
-            </div>
+      <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Panel de Control</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+        <!-- Control de Puerta -->
+        <div class="control-card">
+          <h3 class="font-bold text-lg">Puerta Principal</h3>
+          <button onclick="toggleDevice('puerta', this)" class="control-button">Alternar</button>
         </div>
+        <!-- Control de Garaje -->
+        <div class="control-card">
+          <h3 class="font-bold text-lg">Garaje</h3>
+          <button onclick="toggleDevice('garaje', this)" class="control-button">Alternar</button>
+        </div>
+        <!-- Control de Luces -->
+        <div class="control-card">
+          <h3 class="font-bold text-lg">Luces Global</h3>
+          <button onclick="toggleDevice('todo', this)" class="control-button">Alternar</button>
+        </div>
+        <!-- Control de Extractor -->
+        <div class="control-card">
+          <h3 class="font-bold text-lg">Extractor</h3>
+          <button onclick="toggleDevice('extractor', this)" class="control-button">Alternar</button>
+        </div>
+      </div>
     </section>
 
     <!-- Sección de Tour Virtual -->
@@ -725,7 +735,7 @@
         <p class="text-base font-normal leading-normal pb-6 px-4">
           Explora una casa inteligente con nuestro tour virtual interactivo. Descubre cómo la tecnología puede transformar tu hogar.
         </p>
-                  <div class="relative overflow-hidden rounded-xl mx-4 aspect-video md:aspect-video bg-gray-800 flex items-center justify-center" style="min-height: 300px;">
+        <div class="relative overflow-hidden rounded-xl mx-4 aspect-video md:aspect-video bg-gray-800 flex items-center justify-center" style="min-height: 300px;">
           <div class="text-center p-8">
             <svg class="w-16 h-16 mx-auto text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
@@ -874,8 +884,7 @@
             skills: [],
             experience: []
           },
-          teamMembers: [
-            {
+          teamMembers: [{
               name: 'Dara',
               position: 'Líder del Equipo',
               email: 'dara@example.com',
@@ -884,7 +893,11 @@
               shortBio: 'Líder y visionaria del proyecto.',
               bio: 'Dara es la fuerza impulsora detrás de la visión del equipo, combinando liderazgo con una profunda experiencia técnica para guiar al equipo hacia el éxito.',
               skills: ['Liderazgo', 'Gestión de Proyectos', 'Arquitectura de Software'],
-              experience: [{ role: 'Líder de Proyecto', company: 'Innovatech', duration: '2020 - Presente' }]
+              experience: [{
+                role: 'Líder de Proyecto',
+                company: 'Innovatech',
+                duration: '2020 - Presente'
+              }]
             },
             {
               name: 'Edwin',
@@ -895,7 +908,11 @@
               shortBio: 'El arquitecto de nuestra infraestructura.',
               bio: 'Edwin se especializa en la construcción de sistemas robustos y escalables, asegurando que toda la lógica del servidor funcione a la perfección.',
               skills: ['Node.js', 'Bases de Datos', 'API REST', 'Microservicios'],
-              experience: [{ role: 'Ingeniero Backend', company: 'Data Systems', duration: '2019 - Presente' }]
+              experience: [{
+                role: 'Ingeniero Backend',
+                company: 'Data Systems',
+                duration: '2019 - Presente'
+              }]
             },
             {
               name: 'Jocabed',
@@ -906,7 +923,11 @@
               shortBio: 'Creadora de experiencias de usuario.',
               bio: 'Jocabed diseña interfaces intuitivas y atractivas, enfocándose en que la interacción del usuario con la tecnología sea simple y agradable.',
               skills: ['Diseño UX/UI', 'Prototipado', 'Figma', 'Adobe XD'],
-              experience: [{ role: 'Diseñadora UX/UI', company: 'Creative Minds', duration: '2021 - Presente' }]
+              experience: [{
+                role: 'Diseñadora UX/UI',
+                company: 'Creative Minds',
+                duration: '2021 - Presente'
+              }]
             },
             {
               name: 'Jona',
@@ -917,7 +938,11 @@
               shortBio: 'El mago de la interfaz de usuario.',
               bio: 'Jona transforma los diseños en realidad, escribiendo código limpio y eficiente para crear interfaces de usuario dinámicas y responsivas.',
               skills: ['JavaScript', 'React', 'Vue.js', 'CSS Moderno'],
-              experience: [{ role: 'Desarrollador Frontend', company: 'Web Solutions', duration: '2018 - Presente' }]
+              experience: [{
+                role: 'Desarrollador Frontend',
+                company: 'Web Solutions',
+                duration: '2018 - Presente'
+              }]
             },
             {
               name: 'Laura',
@@ -928,7 +953,11 @@
               shortBio: 'Garantiza la calidad de nuestro software.',
               bio: 'Laura es meticulosa en la detección de errores, asegurando que cada producto que lanzamos cumpla con los más altos estándares de calidad.',
               skills: ['Testing Manual', 'Automatización de Pruebas', 'Selenium', 'Jira'],
-              experience: [{ role: 'Ingeniera de Calidad', company: 'Tech Labs', duration: '2019 - Presente' }]
+              experience: [{
+                role: 'Ingeniera de Calidad',
+                company: 'Tech Labs',
+                duration: '2019 - Presente'
+              }]
             },
             {
               name: 'Manny',
@@ -939,7 +968,11 @@
               shortBio: 'El cerebro detrás de la casa inteligente.',
               bio: 'Manny es el especialista en hardware y automatización del hogar, conectando el mundo físico con el digital para crear una experiencia de hogar inteligente y cohesiva.',
               skills: ['Arduino', 'ESP32', 'IoT', 'Integración de Hardware'],
-              experience: [{ role: 'Especialista en IoT', company: 'Smart Homes Inc.', duration: '2017 - Presente' }]
+              experience: [{
+                role: 'Especialista en IoT',
+                company: 'Smart Homes Inc.',
+                duration: '2017 - Presente'
+              }]
             }
           ],
           openModal(member) {
@@ -1045,180 +1078,190 @@
   <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Alpine.js y plugins -->
+  <!-- Alpine.js y plugins -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
   <!-- scripts.js mantiene la interactividad 3D y scroll -->
   <script type="module" src="public/a.js"></script>
   <script type="module" src="public/js/mein.js"></script>
 
-    <!-- Botones Flotantes -->
-    <a href="https://wa.me/5211234567890?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <button id="toggle-particles-btn" title="Activar/Desactivar Partículas">
-        <i class="fas fa-atom"></i>
-    </button>
+  <!-- Botones Flotantes -->
+  <a href="https://wa.me/5211234567890?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <button id="toggle-particles-btn" title="Activar/Desactivar Partículas">
+    <i class="fas fa-atom"></i>
+  </button>
 
-    <style>
-        .whatsapp-btn, #toggle-particles-btn {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 28px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-            z-index: 1000;
-        }
-        .whatsapp-btn:hover, #toggle-particles-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
-        .whatsapp-btn {
-            background-color: #25D366; /* Verde de WhatsApp */
-            bottom: 20px;
-            right: 20px;
-        }
-        #toggle-particles-btn {
-            background-color: #007bff; /* Azul */
-            bottom: 20px;
-            left: 20px;
-        }
-        #toggle-particles-btn.off {
-            background-color: #6c757d; /* Gris */
-        }
-    </style>
+  <style>
+    .whatsapp-btn,
+    #toggle-particles-btn {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 1000;
+    }
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleBtn = document.getElementById('toggle-particles-btn');
-            const particlesContainer = document.getElementById('particles-js');
+    .whatsapp-btn:hover,
+    #toggle-particles-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
 
-            // Estado inicial de las partículas (activadas por defecto)
-            let particlesEnabled = true;
+    .whatsapp-btn {
+      background-color: #25D366;
+      /* Verde de WhatsApp */
+      bottom: 20px;
+      right: 20px;
+    }
 
-            toggleBtn.addEventListener('click', () => {
-                if (particlesEnabled) {
-                    particlesContainer.style.display = 'none';
-                    toggleBtn.classList.add('off');
-                } else {
-                    particlesContainer.style.display = 'block';
-                    toggleBtn.classList.remove('off');
-                }
-                particlesEnabled = !particlesEnabled;
-            });
+    #toggle-particles-btn {
+      background-color: #007bff;
+      /* Azul */
+      bottom: 20px;
+      left: 20px;
+    }
+
+    #toggle-particles-btn.off {
+      background-color: #6c757d;
+      /* Gris */
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleBtn = document.getElementById('toggle-particles-btn');
+      const particlesContainer = document.getElementById('particles-js');
+
+      // Estado inicial de las partículas (activadas por defecto)
+      let particlesEnabled = true;
+
+      toggleBtn.addEventListener('click', () => {
+        if (particlesEnabled) {
+          particlesContainer.style.display = 'none';
+          toggleBtn.classList.add('off');
+        } else {
+          particlesContainer.style.display = 'block';
+          toggleBtn.classList.remove('off');
+        }
+        particlesEnabled = !particlesEnabled;
+      });
+    });
+  </script>
+
+  <!-- Script para el Preloader -->
+  <script>
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('hidden');
+    });
+  </script>
+
+  <!-- Script para Panel de Control -->
+  <script>
+    const esp32_ip = '192.168.1.100'; // <-- IMPORTANTE: Reemplaza con la IP de tu ESP32
+
+    // Estado inicial de los dispositivos (false = apagado/cerrado)
+    const deviceStatus = {
+      puerta: false,
+      garaje: false,
+      todo: false, // Para luces globales
+      extractor: false
+    };
+
+    function toggleDevice(deviceName, button) {
+      // Alternar el estado
+      deviceStatus[deviceName] = !deviceStatus[deviceName];
+      const isActive = deviceStatus[deviceName];
+
+      let command_on, command_off;
+
+      switch (deviceName) {
+        case 'puerta':
+          command_on = 'abrir_puerta';
+          command_off = 'cerrar_puerta';
+          break;
+        case 'garaje':
+          command_on = 'abrir_garaje';
+          command_off = 'cerrar_garaje';
+          break;
+        case 'todo':
+          command_on = 'encender_todo';
+          command_off = 'apagar_todo';
+          break;
+        case 'extractor':
+          command_on = 'iniciar_extractor';
+          command_off = 'detener_extractor';
+          break;
+      }
+
+      const command = isActive ? command_on : command_off;
+
+      fetch(`http://${esp32_ip}/${command}`)
+        .then(response => response.text())
+        .then(data => {
+          console.log(data);
+          // Actualizar el estilo del botón
+          if (isActive) {
+            button.classList.add('active');
+          } else {
+            button.classList.remove('active');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('No se pudo conectar con la casa. Verifica la IP y la conexión.');
+          // Revertir el estado si falla la comunicación
+          deviceStatus[deviceName] = !isActive;
         });
-    </script>
+    }
+  </script>
 
-    <!-- Script para el Preloader -->
-    <script>
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            preloader.classList.add('hidden');
-        });
-    </script>
+  <!-- Dark Mode Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
 
-    <!-- Script para Panel de Control -->
-    <script>
-        const esp32_ip = '192.168.1.100'; // <-- IMPORTANTE: Reemplaza con la IP de tu ESP32
-
-        // Estado inicial de los dispositivos (false = apagado/cerrado)
-        const deviceStatus = {
-            puerta: false,
-            garaje: false,
-            todo: false, // Para luces globales
-            extractor: false
-        };
-
-        function toggleDevice(deviceName, button) {
-            // Alternar el estado
-            deviceStatus[deviceName] = !deviceStatus[deviceName];
-            const isActive = deviceStatus[deviceName];
-
-            let command_on, command_off;
-
-            switch(deviceName) {
-                case 'puerta':
-                    command_on = 'abrir_puerta';
-                    command_off = 'cerrar_puerta';
-                    break;
-                case 'garaje':
-                    command_on = 'abrir_garaje';
-                    command_off = 'cerrar_garaje';
-                    break;
-                case 'todo':
-                    command_on = 'encender_todo';
-                    command_off = 'apagar_todo';
-                    break;
-                case 'extractor':
-                    command_on = 'iniciar_extractor';
-                    command_off = 'detener_extractor';
-                    break;
-            }
-
-            const command = isActive ? command_on : command_off;
-            
-            fetch(`http://${esp32_ip}/${command}`)
-                .then(response => response.text())
-                .then(data => {
-                    console.log(data);
-                    // Actualizar el estilo del botón
-                    if (isActive) {
-                        button.classList.add('active');
-                    } else {
-                        button.classList.remove('active');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('No se pudo conectar con la casa. Verifica la IP y la conexión.');
-                    // Revertir el estado si falla la comunicación
-                    deviceStatus[deviceName] = !isActive;
-                });
+      // Función para aplicar el tema
+      const applyTheme = (isDark) => {
+        if (isDark) {
+          body.classList.add('dark');
+          darkModeToggle.checked = true;
+        } else {
+          body.classList.remove('dark');
+          darkModeToggle.checked = false;
         }
-    </script>
+      };
 
-    <!-- Dark Mode Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const body = document.body;
+      // Comprobar preferencia guardada en localStorage
+      const savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme) {
+        applyTheme(savedTheme === 'true');
+      } else {
+        // Opcional: detectar preferencia del sistema operativo
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark);
+      }
 
-            // Función para aplicar el tema
-            const applyTheme = (isDark) => {
-                if (isDark) {
-                    body.classList.add('dark');
-                    darkModeToggle.checked = true;
-                } else {
-                    body.classList.remove('dark');
-                    darkModeToggle.checked = false;
-                }
-            };
+      // Event listener para el botón
+      darkModeToggle.addEventListener('change', function() {
+        const isDark = this.checked;
+        applyTheme(isDark);
+        localStorage.setItem('darkMode', isDark);
+      });
+    });
+  </script>
+</body>
 
-            // Comprobar preferencia guardada en localStorage
-            const savedTheme = localStorage.getItem('darkMode');
-            if (savedTheme) {
-                applyTheme(savedTheme === 'true');
-            } else {
-                // Opcional: detectar preferencia del sistema operativo
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                applyTheme(prefersDark);
-            }
-
-            // Event listener para el botón
-            darkModeToggle.addEventListener('change', function () {
-                const isDark = this.checked;
-                applyTheme(isDark);
-                localStorage.setItem('darkMode', isDark);
-            });
-        });
-    </script>
-  </body>
 </html>
